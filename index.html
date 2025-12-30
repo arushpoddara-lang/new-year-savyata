@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year Savyata ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a002b, #000);
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+/* Start Screen */
+#startScreen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #3a0ca3, #7209b7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#startScreen h1 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+#startScreen button {
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,77,109,0.7);
+}
+
+/* Main Content */
+#content {
+  display: none;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 40px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff4d6d; }
+  to { text-shadow: 0 0 30px #ff99ac; }
+}
+
+.message {
+  max-width: 700px;
+  margin: 30px auto;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+
+/* Photo Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255,77,109,0.4);
+  animation: fadeZoom 2s ease forwards;
+}
+
+@keyframes fadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(20); opacity: 0; }
+}
+
+footer {
+  margin: 40px 0 20px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Start Screen -->
+<div id="startScreen">
+  <h1>🎁 A gift is sent to you</h1>
+  <button onclick="openGift()">Open 💖</button>
+</div>
+
+<!-- Music -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_3d6d5b0e8f.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Main Content -->
+<div id="content">
+  <h1>🎆 Happy New Year SAVYATA 🎆</h1>
+
+  <div class="message">
+    Happy New Year to my favorite person 💖<br><br>
+    I hope this year may fulfill all your wishes  
+    and make your dreams come true!! ❤️🧿<br><br>
+    You deserve all the love, happiness and magic  
+    this new year has to offer ✨
+  </div>
+
+  <!-- Image Section -->
+  <div class="gallery">
+    <img src="Images/Image2.jpg">
+    <img src="Images/Image1.jpg">
+    <img src="Images/Image3.jpg">
+  </div>
+</div>
+
+<footer>Made with ❤️ just for you</footer>
+
+<script>
+function openGift() {
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("content").style.display = "block";
+  document.getElementById("music").play();
+  setInterval(createHeart, 300);
+  setInterval(createFirework, 800);
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+
+function createFirework() {
+  const fw = document.createElement("div");
+  fw.className = "firework";
+  fw.style.left = Math.random() * 100 + "vw";
+  fw.style.top = Math.random() * 60 + "vh";
+  fw.style.background = ["gold","pink","cyan","violet"][Math.floor(Math.random()*4)];
+  document.body.appendChild(fw);
+  setTimeout(() => fw.remove(), 1500);
+}
+</script>
+
+</body>
+</html>
